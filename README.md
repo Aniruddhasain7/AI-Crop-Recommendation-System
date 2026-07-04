@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="assets/crop_logo.png" alt="Crop Recommendation System Logo" width="150px" style="border-radius: 20px;"/>
-</div>  
-  
 # 🌾 Crop Recommendation System
 
 **An intelligent Machine Learning-based system designed to assist farmers and agricultural enthusiasts in choosing the most suitable crop for their land. By analyzing soil composition and environmental conditions, the system provides high-accuracy recommendations to maximize yield and sustainability.**
