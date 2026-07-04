@@ -1,18 +1,10 @@
 <div align="center">
-  <img src="assets/crop_logo.png" alt="Crop Recommendation System Logo" width="180px" style="border-radius: 20px;"/>
+  <img src="assets/crop_logo.png" alt="Crop Recommendation System Logo" width="150px" style="border-radius: 20px;"/>
 </div>  
   
 # 🌾 Crop Recommendation System
 
-<div align="center">
-  [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-  [![Streamlit App](https://img.shields.io/badge/Streamlit-1.28%2B-FF4B4B.svg)](https://streamlit.io/)
-  [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3%2B-F7931E.svg)](https://scikit-learn.org/)
-  [![Model Accuracy](https://img.shields.io/badge/Model%20Accuracy-99%25-green.svg)](#-model-performance)
-
 **An intelligent Machine Learning-based system designed to assist farmers and agricultural enthusiasts in choosing the most suitable crop for their land. By analyzing soil composition and environmental conditions, the system provides high-accuracy recommendations to maximize yield and sustainability.**
-
-</div>
 
 ---
 
