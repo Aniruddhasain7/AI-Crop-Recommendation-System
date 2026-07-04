@@ -1,6 +1,6 @@
 # 🌾 Crop Recommendation System
 
-**An intelligent Machine Learning-based system designed to assist farmers and agricultural enthusiasts in choosing the most suitable crop for their land. By analyzing soil composition and environmental conditions, the system provides high-accuracy recommendations to maximize yield and sustainability.**
+An intelligent Machine Learning-based system designed to assist farmers and agricultural enthusiasts in choosing the most suitable crop for their land. By analyzing soil composition and environmental conditions, the system provides high-accuracy recommendations to maximize yield and sustainability.
 
 ---
 
@@ -59,8 +59,8 @@ Make sure you have **Python 3.8 or higher** installed.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Aniruddhasain7/AI-Crop-Recommendation-System.git
-cd AI-Crop-Recommendation-System
+git clone https://github.com/Aniruddhasain7/Crop-Recommendation-System.git
+cd Crop-Recommendation-System
 ```
 
 ### 2. Create a Virtual Environment (Recommended)
