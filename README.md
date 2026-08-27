@@ -44,7 +44,7 @@ The system considers the following agricultural parameters to make predictions:
 - **Backend & Frontend**: Python & Streamlit (with custom CSS injection)
 - **Machine Learning**: Scikit-Learn
 - **Data Analysis & Handling**: Pandas & NumPy
-- **Model Serialization**: Joblib (loads `crop_recommendation_model.pkl`, `scaler.pkl`, `label_encoder.pkl`)
+- **Model Serialization**: Joblib (loads bundled `crop_model.joblib` containing model, scaler, and label encoder)
 
 ---
 
@@ -102,9 +102,7 @@ This will start a local server and automatically open the application in your de
 ├── app.py                      # Main Streamlit web application
 ├── Crop_Recommendation.ipynb    # Model training & analysis notebook
 ├── Crop_recommendation.csv      # Raw training dataset
-├── crop_recommendation_model.pkl# Serialized Random Forest Classifier
-├── label_encoder.pkl            # Serialized label encoder for classes
-├── scaler.pkl                  # Serialized feature scaler
+├── crop_model.joblib           # Serialized Pipeline bundle (model, scaler, label_encoder)
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project documentation
 ```

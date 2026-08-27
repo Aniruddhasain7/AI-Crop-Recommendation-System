@@ -4,9 +4,10 @@ import joblib
 import base64
 import os
 
-model = joblib.load("crop_recommendation_model.pkl")
-scaler = joblib.load("scaler.pkl")
-label_encoder = joblib.load("label_encoder.pkl")
+pipeline_bundle = joblib.load("crop_model.joblib")
+model = pipeline_bundle["model"]
+scaler = pipeline_bundle["scaler"]
+label_encoder = pipeline_bundle["label_encoder"]
 
 st.set_page_config(page_title="Crop Recommendation System", page_icon="🌾", layout="centered")
 
