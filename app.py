@@ -15,10 +15,21 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
-html, body, [data-testid="stAppViewContainer"] {
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden !important;
+}
+
+html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     font-family: 'Inter', sans-serif;
     background-color: #050505 !important;
     color: #FFFFFF;
+    max-width: 100vw;
+    overflow-x: hidden !important;
 }
 
 [data-testid="stHeader"] {
@@ -27,7 +38,9 @@ html, body, [data-testid="stAppViewContainer"] {
 
 [data-testid="stMainBlockContainer"] {
     max-width: 1100px;
-    padding: 3rem 2rem;
+    width: 100% !important;
+    padding: 2.5rem 1.5rem;
+    box-sizing: border-box !important;
 }
 
 div[data-testid="stImage"] img {
@@ -36,6 +49,8 @@ div[data-testid="stImage"] img {
     box-shadow: 0 0 30px rgba(16, 185, 129, 0.15) !important;
     margin: 0 auto !important;
     display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -48,33 +63,38 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.35rem !important;
     font-weight: 600 !important;
     margin-top: 15px !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 16px !important;
     border-bottom: 2px solid rgba(16, 185, 129, 0.15) !important;
     padding-bottom: 8px !important;
 }
 
 .main-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .main-header h1 {
     font-family: 'Outfit', sans-serif !important;
-    font-size: 2.8rem !important;
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem) !important;
     font-weight: 800 !important;
     background: linear-gradient(135deg, #10B981 0%, #34D399 50%, #A7F3D0 100%);
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    margin-top: 15px !important;
-    margin-bottom: 12px !important;
+    margin-top: 12px !important;
+    margin-bottom: 10px !important;
+    line-height: 1.2 !important;
+    word-break: break-word;
 }
 .main-header p {
     font-family: 'Inter', sans-serif !important;
     color: #94A3B8 !important;
-    font-size: 1.05rem !important;
+    font-size: clamp(0.88rem, 2.2vw, 1.05rem) !important;
     max-width: 700px;
     margin: 0 auto !important;
     opacity: 0.9;
     line-height: 1.6;
+    word-break: break-word;
 }
 
 .logo-wrapper {
@@ -82,9 +102,10 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     margin-bottom: 8px;
+    width: 100%;
 }
 .logo-wrapper img {
-    width: 140px;
+    width: 130px;
     max-width: 100%;
     height: auto;
     border-radius: 20px !important;
@@ -92,23 +113,72 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 0 30px rgba(16, 185, 129, 0.15) !important;
 }
 
+/* Streamlit responsive column wrap for tablets and mobile */
 @media (max-width: 768px) {
-    .logo-wrapper img {
-        width: 100px;
+    [data-testid="stHorizontalBlock"] {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
     }
-    .main-header h1 {
-        font-size: 1.8rem !important;
-        padding: 0 12px;
-    }
-    .main-header p {
-        font-size: 0.9rem !important;
-        padding: 0 12px;
-    }
-    .main-header {
-        margin-bottom: 24px;
+    [data-testid="column"] {
+        min-width: calc(50% - 6px) !important;
+        flex: 1 1 calc(50% - 6px) !important;
+        max-width: 100% !important;
     }
     [data-testid="stMainBlockContainer"] {
-        padding: 1.5rem 1rem !important;
+        padding: 1.25rem 0.75rem !important;
+    }
+    .logo-wrapper img {
+        width: 85px !important;
+    }
+    .main-header {
+        margin-bottom: 20px !important;
+    }
+    .crop-result-card {
+        padding: 20px 14px !important;
+        border-radius: 18px !important;
+        margin-top: 20px !important;
+    }
+    .confidence-text {
+        font-size: 0.95rem !important;
+        margin-bottom: 12px !important;
+    }
+    .prob-list-title {
+        font-size: 1.1rem !important;
+        margin-top: 20px !important;
+    }
+    .prob-item {
+        padding: 10px 12px !important;
+    }
+    div[data-testid="stNumberInput"] {
+        padding: 10px !important;
+    }
+    div.stButton > button {
+        padding: 12px 20px !important;
+        font-size: 1.05rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    [data-testid="column"] {
+        min-width: 100% !important;
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+    [data-testid="stMainBlockContainer"] {
+        padding: 1rem 0.5rem !important;
+    }
+    .logo-wrapper img {
+        width: 70px !important;
+    }
+    .crop-result-card {
+        padding: 16px 10px !important;
+    }
+    .prob-info {
+        font-size: 0.88rem !important;
     }
 }
 
@@ -118,7 +188,9 @@ div[data-testid="stNumberInput"] {
     border-radius: 12px !important;
     padding: 14px !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-    margin-bottom: 14px !important;
+    margin-bottom: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 div[data-testid="stNumberInput"]:focus-within {
@@ -131,6 +203,8 @@ div[data-baseweb="input"] {
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
     border-radius: 8px !important;
     transition: all 0.3s ease;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 div[data-baseweb="input"]:focus-within {
     border-color: #10B981 !important;
@@ -176,6 +250,7 @@ div.stButton > button {
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     width: 100% !important;
+    box-sizing: border-box !important;
     margin-top: 15px;
 }
 div.stButton > button:hover {
@@ -193,11 +268,15 @@ div.stButton > button:active {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(16, 185, 129, 0.25);
     border-radius: 24px;
-    padding: 36px;
-    margin-top: 30px;
+    padding: 28px 20px;
+    margin-top: 25px;
     text-align: center;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.05);
     animation: fadeIn 0.6s ease-out;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
@@ -215,19 +294,26 @@ div.stButton > button:active {
     color: white;
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: 2.4rem;
+    font-size: clamp(1.25rem, 5vw, 2.2rem);
     letter-spacing: 1px;
-    padding: 12px 35px;
+    padding: 10px 20px;
     border-radius: 12px;
     display: inline-block;
-    margin: 18px 0;
+    margin: 14px 0;
     box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
     text-transform: uppercase;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    line-height: 1.2;
 }
 .confidence-text {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #CBD5E1;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
+    word-break: break-word;
 }
 .confidence-text strong {
     color: #10B981;
@@ -239,46 +325,58 @@ div.stButton > button:active {
     width: 100%;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
 }
 .progress-bar-inner {
     background: linear-gradient(90deg, #10B981 0%, #34D399 100%);
     height: 100%;
     border-radius: 10px;
+    max-width: 100%;
 }
 .prob-list-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #FFFFFF;
-    margin-top: 35px;
-    margin-bottom: 15px;
+    margin-top: 30px;
+    margin-bottom: 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .prob-item {
     background: rgba(18, 18, 18, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 12px;
-    padding: 14px 18px;
+    padding: 12px 16px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
 }
 .prob-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: 'Outfit', sans-serif;
     font-weight: 500;
     font-size: 1rem;
+    gap: 8px;
 }
 .prob-name {
     color: #E2E8F0;
     text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .prob-percentage {
     color: #34D399;
+    flex-shrink: 0;
 }
 
 #MainMenu {visibility: hidden;}
